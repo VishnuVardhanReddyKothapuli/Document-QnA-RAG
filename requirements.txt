@@ -1,4 +1,5 @@
 langchain
+langchain-community
 # langchain-pypdf
 langchain-groq 
 langchain-huggingface
