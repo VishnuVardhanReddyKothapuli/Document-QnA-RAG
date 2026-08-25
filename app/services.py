@@ -16,10 +16,13 @@ embeddings = HuggingFaceEmbeddings(
     model_name='sentence-transformers/all-MiniLM-L6-v2'
 )
 
+groq_api_key = (os.environ.get('GROQ_API_KEY') or '').strip("'\" ")
+groq_model = (os.environ.get('GROQ_MODEL') or 'openai/gpt-oss-120b').strip("'\" ")
+
 llm = ChatGroq(
-    model='llama-3.3-70b-versatile',
+    model=groq_model,
     temperature=0.1,
-    groq_api_key=os.environ.get('GROQ_API_KEY'),
+    groq_api_key=groq_api_key,
 )
 
 prompt = ChatPromptTemplate.from_messages([
@@ -62,6 +65,12 @@ class RAGService:
     def chat(self, question: str) -> str:
         if not self.rag_chain:
             return "Please upload a PDF document first."
-        return self.rag_chain.invoke(question)
+        try:
+            return self.rag_chain.invoke(question)
+        except Exception as e:
+            err_msg = str(e)
+            if "404" in err_msg or "model_not_found" in err_msg or "does not exist" in err_msg:
+                return f"Groq API Error: The model '{groq_model}' was not found or your API key does not have access."
+            raise e
 
 rag_service = RAGService()

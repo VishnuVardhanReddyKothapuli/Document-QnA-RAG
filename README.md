@@ -34,9 +34,10 @@ A modern, fast, and minimalist web application that allows users to upload PDF d
    ```
 
 2. **Set up environment variables:**
-   Create a `.env` file in the root directory and add your Groq API key:
+   Create a `.env` file in the root directory and add your Groq API key and optional model:
    ```ini
    GROQ_API_KEY=your_groq_api_key_here
+   GROQ_MODEL=openai/gpt-oss-120b
    ```
 
 3. **Install dependencies:**

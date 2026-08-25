@@ -28,6 +28,10 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 async def read_index():
     return FileResponse("app/static/index.html")
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(".pdf"):

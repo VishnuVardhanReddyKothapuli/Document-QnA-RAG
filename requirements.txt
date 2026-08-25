@@ -1,12 +1,11 @@
 langchain
 langchain-community
-# langchain-pypdf
-langchain-groq 
+langchain-groq
 langchain-huggingface
 langchain-chroma
 langchain-text-splitters
-sentence-transformers 
-chromadb 
+sentence-transformers
+chromadb
 pypdf
 python-dotenv
 fastapi
