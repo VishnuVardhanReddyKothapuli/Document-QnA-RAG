@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatHistory = document.getElementById('chatHistory');
     const sendBtn = document.getElementById('sendBtn');
 
-    // --- File Upload Logic ---
     dropzone.addEventListener('click', () => fileInput.click());
 
     dropzone.addEventListener('dragover', (e) => {
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadStatus.classList.remove('hidden');
     }
 
-    // --- Chat Logic ---
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const question = questionInput.value.trim();
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const bubble = document.createElement('div');
         bubble.className = 'message-bubble';
         
-        // Very simple markdown formatting for newlines and bold (if needed)
         let formattedText = text.replace(/\n/g, '<br>');
         bubble.innerHTML = formattedText;
         

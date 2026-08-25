@@ -17,11 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Ensure required directories exist
 os.makedirs("app/uploads", exist_ok=True)
 os.makedirs("app/static", exist_ok=True)
 
-# Mount static files directory
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 @app.get("/")
@@ -42,10 +40,8 @@ async def upload_pdf(file: UploadFile = File(...)):
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
         
-        # Process the PDF for RAG
         rag_service.process_pdf(file_path)
         
-        # Clean up the file after processing to save space
         if os.path.exists(file_path):
             os.remove(file_path)
             

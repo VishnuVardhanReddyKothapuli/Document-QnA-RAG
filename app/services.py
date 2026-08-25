@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Initialize embeddings and LLM globally
 embeddings = HuggingFaceEmbeddings(
     model_name='sentence-transformers/all-MiniLM-L6-v2'
 )
@@ -51,7 +50,6 @@ class RAGService:
         )
         splits = text_splitter.split_documents(docs)
 
-        # Create or update vectorstore
         self.vectorstore = Chroma.from_documents(documents=splits, embedding=embeddings)
         self.retriever = self.vectorstore.as_retriever(search_kwargs={'k':3})
         

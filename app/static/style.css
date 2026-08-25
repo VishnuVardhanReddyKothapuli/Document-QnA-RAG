@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #a435f0; /* Udemy purple */
+    --primary-color: #a435f0;
     --primary-hover: #8710d8;
     --text-color: #1c1d1f;
     --text-light: #6a6f73;
@@ -63,7 +63,6 @@ body {
     padding: 3rem 1.5rem;
 }
 
-/* Upload Section */
 .upload-section {
     text-align: center;
     margin-top: 2rem;
@@ -142,7 +141,6 @@ body {
     border: 1px solid var(--error-color);
 }
 
-/* Chat Section */
 .chat-section {
     flex: 1;
     display: flex;
@@ -208,7 +206,6 @@ body {
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-/* markdown styles within system messages */
 .system-message .message-bubble p { margin-bottom: 0.5rem; }
 .system-message .message-bubble p:last-child { margin-bottom: 0; }
 .system-message .message-bubble code {
